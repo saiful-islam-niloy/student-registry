@@ -99,3 +99,22 @@ func DeleteStudent(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Error")
 	}
 }
+
+func DeleteAllStudent(w http.ResponseWriter, r *http.Request) {
+	reqBody, err := ioutil.ReadAll(r.Body)
+
+	student := models.Student{}
+	json.Unmarshal(reqBody, &student)
+
+	collection := config.GetStudentsCollection()
+
+	collection.DeleteMany(
+		context.TODO(),
+		bson.M{},
+	)
+
+	if err != nil {
+		log.Fatal(err)
+		fmt.Fprintf(w, "Error")
+	}
+}

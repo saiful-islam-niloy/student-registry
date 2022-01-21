@@ -42,6 +42,15 @@ func DeleteStudent(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func DeleteAllStudent(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "DELETE":
+		controllers.DeleteAllStudent(w, r)
+	default:
+		ReturnError(w, r)
+	}
+}
+
 func ReturnError(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Wrong Verb!")
 }
