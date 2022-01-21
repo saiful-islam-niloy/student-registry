@@ -24,6 +24,13 @@ func GetStudent(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func UpdateStudent(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "PUT":
+		controllers.UpdateStudent(w, r)
+	}
+}
+
 func ReturnError(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Wrong Verb!")
 }

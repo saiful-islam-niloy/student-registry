@@ -56,3 +56,27 @@ func GetStudent(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprintf(w, string(formattedData))
 }
+
+func UpdateStudent(w http.ResponseWriter, r *http.Request) {
+	reqBody, err := ioutil.ReadAll(r.Body)
+
+	student := models.Student{}
+	json.Unmarshal(reqBody, &student)
+
+	collection := config.GetStudentsCollection()
+
+	collection.UpdateOne(
+		context.TODO(),
+		bson.M{"email": student.Email},
+		bson.D{
+			{"$set", bson.D{{"name", student.Name}}},
+			{"$set", bson.D{{"university", student.University}}},
+			{"$set", bson.D{{"major", student.Major}}},
+		},
+	)
+
+	if err != nil {
+		log.Fatal(err)
+		fmt.Fprintf(w, "Error")
+	}
+}
