@@ -22,5 +22,18 @@ $secondary-weight: 500;
   background: linear-gradient(135deg, #c3ec52 0%, #0ba29d 100%);
   border-radius: 15px;
   height: 30vh;
-  margin: 5vh;
+  margin: 1rem 2rem 2rem 2rem;
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner_title {
+  display: inline-block;
+  color: $primary-background;
+  border-radius: 30px;
+  padding: 1rem;
+  font-family: $primary-font;
+  font-weight: 400;
 }
