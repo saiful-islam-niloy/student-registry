@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"main/config"
-	"main/handlers"
+	"main/controllers"
 	"net/http"
 	"os"
 )
@@ -15,11 +15,11 @@ func main() {
 		fmt.Fprintf(w, "Welcome to Student Registration System :)")
 	})
 
-	http.HandleFunc("/add-student", handlers.AddStudent)
-	http.HandleFunc("/get-student", handlers.GetStudent)
-	http.HandleFunc("/update-student", handlers.UpdateStudent)
-	http.HandleFunc("/delete-student", handlers.DeleteStudent)
-	http.HandleFunc("/delete-all-student", handlers.DeleteAllStudent)
+	http.HandleFunc("/add-student", controllers.AddStudent)
+	http.HandleFunc("/get-student", controllers.GetStudent)
+	http.HandleFunc("/update-student", controllers.UpdateStudent)
+	http.HandleFunc("/delete-student", controllers.DeleteStudent)
+	http.HandleFunc("/delete-all-student", controllers.DeleteAllStudent)
 
 	fmt.Println("APP RUNNING AT-  localhost" + os.Getenv("PORT"))
 	http.ListenAndServe(os.Getenv("PORT"), nil)
