@@ -10,6 +10,7 @@ import (
 	"main/config"
 	"main/models"
 	"net/http"
+	"regexp"
 )
 
 func AddStudent(w http.ResponseWriter, r *http.Request) {
@@ -17,6 +18,12 @@ func AddStudent(w http.ResponseWriter, r *http.Request) {
 
 	student := models.Student{}
 	json.Unmarshal(reqBody, &student)
+
+	if isEmailValid(student.Email) == false {
+		w.WriteHeader(404)
+		fmt.Fprintf(w, "Invalid Email Address!")
+		return
+	}
 
 	collection := config.GetStudentsCollection()
 	collection.InsertOne(context.TODO(), student)
@@ -135,4 +142,13 @@ func DeleteAllStudent(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 		fmt.Fprintf(w, "Error")
 	}
+}
+
+var emailRegex = regexp.MustCompile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")
+
+func isEmailValid(e string) bool {
+	if len(e) < 3 && len(e) > 254 {
+		return false
+	}
+	return emailRegex.MatchString(e)
 }
