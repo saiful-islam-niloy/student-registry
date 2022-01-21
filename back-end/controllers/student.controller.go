@@ -57,6 +57,24 @@ func GetStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(formattedData))
 }
 
+func GetAllStudent(w http.ResponseWriter, r *http.Request) {
+	var students []bson.M
+
+	collection := config.GetStudentsCollection()
+	cursor, err := collection.Find(context.TODO(), bson.M{})
+
+	if err = cursor.All(context.TODO(), &students); err != nil {
+		log.Fatal(err)
+	}
+
+	formattedData, err2 := json.MarshalIndent(students, "", "   ")
+	if err2 != nil {
+		log.Print(err2)
+	}
+
+	fmt.Fprintf(w, string(formattedData))
+}
+
 func UpdateStudent(w http.ResponseWriter, r *http.Request) {
 	reqBody, err := ioutil.ReadAll(r.Body)
 

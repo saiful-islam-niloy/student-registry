@@ -17,6 +17,7 @@ func main() {
 
 	http.HandleFunc("/add-student", controllers.AddStudent)
 	http.HandleFunc("/get-student", controllers.GetStudent)
+	http.HandleFunc("/get-all-student", controllers.GetAllStudent)
 	http.HandleFunc("/update-student", controllers.UpdateStudent)
 	http.HandleFunc("/delete-student", controllers.DeleteStudent)
 	http.HandleFunc("/delete-all-student", controllers.DeleteAllStudent)
