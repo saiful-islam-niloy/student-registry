@@ -2,7 +2,10 @@ module main
 
 go 1.17
 
-require go.mongodb.org/mongo-driver v1.8.2
+require (
+	github.com/joho/godotenv v1.4.0
+	go.mongodb.org/mongo-driver v1.8.2
+)
 
 require (
 	github.com/go-stack/stack v1.8.0 // indirect
