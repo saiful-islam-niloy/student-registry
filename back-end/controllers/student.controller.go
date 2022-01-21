@@ -25,6 +25,12 @@ func AddStudent(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if isRegistered(student.Email) == true {
+		w.WriteHeader(404)
+		fmt.Fprintf(w, "Email already registered!")
+		return
+	}
+
 	collection := config.GetStudentsCollection()
 	collection.InsertOne(context.TODO(), student)
 
@@ -151,4 +157,21 @@ func isEmailValid(e string) bool {
 		return false
 	}
 	return emailRegex.MatchString(e)
+}
+
+func isRegistered(e string) bool {
+	collection := config.GetStudentsCollection()
+
+	var student bson.M
+	err := collection.FindOne(
+		context.TODO(),
+		bson.M{"email": e},
+	).Decode(&student)
+
+	//IF DOCUMENT FOUND, ERROR WILL BE NIL
+	if err == nil {
+		return true
+	} else {
+		return false
+	}
 }
