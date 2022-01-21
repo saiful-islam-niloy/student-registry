@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"go.mongodb.org/mongo-driver/bson"
 	"io/ioutil"
 	"log"
 	"main/config"
@@ -18,10 +19,7 @@ func AddStudent(w http.ResponseWriter, r *http.Request) {
 	json.Unmarshal(reqBody, &student)
 
 	collection := config.GetStudentsCollection()
-	result, err2 := collection.InsertOne(context.TODO(), student)
-
-	fmt.Println(result)
-	fmt.Println(err2)
+	collection.InsertOne(context.TODO(), student)
 
 	fmt.Println(student.Name + " " + student.University)
 
@@ -29,4 +27,32 @@ func AddStudent(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 		fmt.Fprintf(w, "Error")
 	}
+}
+
+func GetStudent(w http.ResponseWriter, r *http.Request) {
+	keys, err := r.URL.Query()["email"]
+
+	if !err || len(keys[0]) < 1 {
+		log.Println("Url Param 'key' is missing")
+		return
+	}
+
+	key := keys[0]
+	log.Println("Url Param 'key' is: " + string(key))
+
+	var Student bson.M
+
+	collection := config.GetStudentsCollection()
+
+	collection.FindOne(
+		context.TODO(),
+		bson.M{"email": key},
+	).Decode(&Student)
+
+	formattedData, err2 := json.MarshalIndent(Student, "", "   ")
+	if err2 != nil {
+		log.Print(err2)
+	}
+
+	fmt.Fprintf(w, string(formattedData))
 }
