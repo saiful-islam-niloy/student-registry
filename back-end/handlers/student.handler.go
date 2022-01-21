@@ -28,6 +28,17 @@ func UpdateStudent(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "PUT":
 		controllers.UpdateStudent(w, r)
+	default:
+		ReturnError(w, r)
+	}
+}
+
+func DeleteStudent(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "DELETE":
+		controllers.DeleteStudent(w, r)
+	default:
+		ReturnError(w, r)
 	}
 }
 

@@ -80,3 +80,22 @@ func UpdateStudent(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Error")
 	}
 }
+
+func DeleteStudent(w http.ResponseWriter, r *http.Request) {
+	reqBody, err := ioutil.ReadAll(r.Body)
+
+	student := models.Student{}
+	json.Unmarshal(reqBody, &student)
+
+	collection := config.GetStudentsCollection()
+
+	collection.DeleteOne(
+		context.TODO(),
+		bson.M{"email": student.Email},
+	)
+
+	if err != nil {
+		log.Fatal(err)
+		fmt.Fprintf(w, "Error")
+	}
+}
