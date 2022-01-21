@@ -1,0 +1,9 @@
+
+/build
+.idea/
+/node_modules
+/public
+/src/asset/css/bootstrap.min.css
+
+package.json
+package-lock.json

@@ -1,0 +1,26 @@
+//FONT
+$primary-font: 'Montserrat', sans-serif;
+$secondary-font: 'Raleway', sans-serif;
+$fancy-font: 'Nerko One', cursive, sans-serif;
+
+//BACKGROUND
+$primary-background: #282c34;
+
+//FONT WEIGHT
+$primary-weight: 800;
+$secondary-weight: 500;
+
+.background {
+  background: $primary-background;
+  color: white;
+  min-height: 100vh;
+  font-family: $primary-font;
+  cursor: grab;
+}
+
+.banner_background {
+  background: linear-gradient(135deg, #c3ec52 0%, #0ba29d 100%);
+  border-radius: 15px;
+  height: 30vh;
+  margin: 5vh;
+}
