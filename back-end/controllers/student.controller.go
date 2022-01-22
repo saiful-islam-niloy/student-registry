@@ -84,7 +84,7 @@ func GetAllStudent(w http.ResponseWriter, r *http.Request) {
 	if err2 != nil {
 		log.Print(err2)
 	}
-
+	w.Header().Set("Content-Type", "application/json")
 	fmt.Fprintf(w, string(formattedData))
 }
 
