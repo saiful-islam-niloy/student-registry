@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
+import StudentList from './StudentList';
 
 export default class Features extends Component {
   constructor() {
     super();
     this.state = {
       view: '',
+      status: 0,
       features: [
         {
           title: 'Student List',
@@ -36,7 +38,7 @@ export default class Features extends Component {
       let { title, gradient } = feature;
       return (
         <Col key={index}>
-          <Card style={{ background: gradient }} className='feature_card'>
+          <Card style={{ background: gradient }} className='feature_card' onClick={() => this.setState({ status: index })}>
             <Card.Body>
               <Card.Title className='feature_title'>{title}</Card.Title>
             </Card.Body>
@@ -48,13 +50,28 @@ export default class Features extends Component {
   }
 
   render() {
+    let { status } = this.state;
     return (
-      <Col lg={4} md={6}>
-        <Row className='feature'>
-          {this.state.view}
-          {/* <br /> */}
-        </Row>
-      </Col>
+      <Row>
+        <Col lg={4} md={6}>
+          <Row className='feature'>
+            {this.state.view}
+            {/* <br /> */}
+          </Row>
+        </Col>
+        <Col lg={8} md={6}>
+          <Card className='activity overflow-auto'>
+            <Card.Title className='text-center activity_title'>
+              {status == -1 && 'Activity Name'}
+              {status == 0 && 'Student List'}
+              {status == 1 && 'Add Student'}
+              {status == 2 && 'Update Student'}
+              {status == 3 && 'Delete Student'}
+            </Card.Title>
+            {status === 0 && <StudentList />}
+          </Card>
+        </Col>
+      </Row>
     );
   }
 }

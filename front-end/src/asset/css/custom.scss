@@ -51,7 +51,7 @@ $secondary-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20rem;
+  width: 25vw;
   border-radius: 15px;
   padding: 1rem;
   font-family: $primary-font;
@@ -70,4 +70,35 @@ $secondary-weight: 500;
   font-family: $primary-font;
   font-weight: $secondary-weight;
   font-size: 20px;
+}
+
+.activity {
+  display: flex;
+  align-items: center;
+  height: 32rem;
+  margin-right: 2rem;
+  background: linear-gradient(135deg, #fcdf8a 0%, #f38381 100%);
+  overflow-y: 'scroll';
+}
+
+.activity_title {
+  background-color: #0ba29d;
+  font-family: $secondary-font;
+  font-size: 25px;
+  width: 20rem;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.student {
+  background-color: #0ba29d;
+  height: 5rem;
+  color: #282c34;
+}
+
+.student_card {
+  background-color: #f38381;
+  width: 15rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
