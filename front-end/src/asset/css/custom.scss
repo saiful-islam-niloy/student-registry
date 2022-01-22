@@ -14,6 +14,7 @@ $secondary-weight: 500;
   background: $primary-background;
   color: white;
   min-height: 100vh;
+  // height: 100%;
   font-family: $primary-font;
   cursor: grab;
 }
@@ -34,6 +35,39 @@ $secondary-weight: 500;
   color: $primary-background;
   border-radius: 30px;
   padding: 1rem;
+  font-size: 5rem;
+  font-family: $fancy-font;
+  font-weight: $secondary-weight;
+}
+
+.feature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature_card {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  border-radius: 15px;
+  padding: 1rem;
   font-family: $primary-font;
-  font-weight: 400;
+  font-weight: $secondary-weight;
+  margin: 1rem 1rem 1rem 2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.feature_card:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 10px rgb(143, 140, 140);
+}
+
+.feature_title {
+  font-family: $primary-font;
+  font-weight: $secondary-weight;
+  font-size: 20px;
 }
