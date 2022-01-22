@@ -25,6 +25,6 @@ func main() {
 	mux.HandleFunc("/delete-all-student", controllers.DeleteAllStudent)
 
 	fmt.Println("APP RUNNING AT-  localhost" + os.Getenv("PORT"))
-	handler := cors.Default().Handler(mux)
+	handler := cors.AllowAll().Handler(mux)
 	http.ListenAndServe(os.Getenv("PORT"), handler)
 }
