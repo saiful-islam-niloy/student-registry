@@ -102,3 +102,16 @@ $secondary-weight: 500;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+.no_student {
+  background: #f38381;
+  width: auto;
+  padding: 10px;
+}
+
+// HELPER
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

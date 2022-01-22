@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import RestClient from '../network/RestClient';
+import NoStudent from './NoStudent';
 
 export default class UpdateStudent extends Component {
   constructor() {
@@ -29,7 +30,9 @@ export default class UpdateStudent extends Component {
   }
 
   renderStudents() {
-    let view = this.state.students.map((student, index) => {
+    let { students } = this.state;
+    if (!students) return;
+    let view = students.map((student, index) => {
       let { name, university, email, major } = student;
       return (
         <Col lg={4} md={4} key={index}>
@@ -69,10 +72,15 @@ export default class UpdateStudent extends Component {
   }
 
   render() {
-    let { view, list, email, name, university, major } = this.state;
+    let { view, list, students, email, name, university, major } = this.state;
     return (
       <Container>
         <Row>
+          {students == null && (
+            <Container className='center'>
+              <NoStudent />
+            </Container>
+          )}
           {list && view}
           {!list && (
             <Form className='mt-4'>

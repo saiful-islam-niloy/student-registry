@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import RestClient from '../network/RestClient';
+import NoStudent from './NoStudent';
 
 export default class DeleteStudent extends Component {
   constructor() {
@@ -42,7 +43,9 @@ export default class DeleteStudent extends Component {
   }
 
   renderStudents() {
-    let view = this.state.students.map((student, index) => {
+    let { students } = this.state;
+    if (!students) return;
+    let view = students.map((student, index) => {
       let { name, university, email, major } = student;
       return (
         <Col lg={4} md={4} key={index}>
@@ -65,10 +68,17 @@ export default class DeleteStudent extends Component {
   }
 
   render() {
-    let { view } = this.state;
+    let { view, students } = this.state;
     return (
       <Container>
-        <Row>{view}</Row>
+        <Row>
+          {view}
+          {students == null && (
+            <Container className='center'>
+              <NoStudent />
+            </Container>
+          )}
+        </Row>
       </Container>
     );
   }
