@@ -53,12 +53,12 @@ export default class UpdateStudent extends Component {
   }
 
   updateStudent() {
-    let { name, email, univeristy, major } = this.state;
+    let { name, email, university, major } = this.state;
 
     let student = {
       name,
       email,
-      univeristy,
+      university,
       major
     };
     RestClient.PutRequest('http://localhost:5050/update-student', JSON.stringify(student))
@@ -83,31 +83,48 @@ export default class UpdateStudent extends Component {
           )}
           {list && view}
           {!list && (
-            <Form className='mt-4'>
-              <Form.Group className='mb-3' onChange={(e) => this.setState({ email: e.target.value })}>
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type='email' placeholder='Enter email' defaultValue={email} disabled />
-              </Form.Group>
+            <Row className='center'>
+              <Form className='mt-4 form'>
+                <Form.Group className='mb-3'>
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control type='email' placeholder='Enter email' defaultValue={email} disabled />
+                </Form.Group>
 
-              <Form.Group className='mb-3' onChange={(e) => this.setState({ name: e.target.value })}>
-                <Form.Label>Name</Form.Label>
-                <Form.Control type='text' defaultValue={name} placeholder='Name' />
-              </Form.Group>
+                <Form.Group className='mb-3'>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type='text'
+                    defaultValue={name}
+                    placeholder='Name'
+                    onChange={(e) => this.setState({ name: e.target.value })}
+                  />
+                </Form.Group>
 
-              <Form.Group className='mb-3' onChange={(e) => this.setState({ university: e.target.value })}>
-                <Form.Label>Univeristy</Form.Label>
-                <Form.Control type='text' defaultValue={university} placeholder='Univeristy' />
-              </Form.Group>
+                <Form.Group className='mb-3'>
+                  <Form.Label>Univeristy</Form.Label>
+                  <Form.Control
+                    type='text'
+                    defaultValue={university}
+                    placeholder='Univeristy'
+                    onChange={(e) => this.setState({ university: e.target.value })}
+                  />
+                </Form.Group>
 
-              <Form.Group className='mb-3' onChange={(e) => this.setState({ major: e.target.value })}>
-                <Form.Label>Major</Form.Label>
-                <Form.Control type='text' defaultValue={major} placeholder='Major' />
-              </Form.Group>
+                <Form.Group className='mb-3'>
+                  <Form.Label>Major</Form.Label>
+                  <Form.Control
+                    type='text'
+                    defaultValue={major}
+                    placeholder='Major'
+                    onChange={(e) => this.setState({ major: e.target.value })}
+                  />
+                </Form.Group>
 
-              <Button variant='primary' onClick={() => this.updateStudent()}>
-                Submit
-              </Button>
-            </Form>
+                <Button variant='primary' onClick={() => this.updateStudent()}>
+                  Submit
+                </Button>
+              </Form>
+            </Row>
           )}
         </Row>
       </Container>
