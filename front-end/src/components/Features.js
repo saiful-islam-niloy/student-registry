@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
+import AddStudent from './AddStudent';
 import StudentList from './StudentList';
 
 export default class Features extends Component {
@@ -69,6 +70,7 @@ export default class Features extends Component {
               {status == 3 && 'Delete Student'}
             </Card.Title>
             {status === 0 && <StudentList />}
+            {status === 1 && <AddStudent />}
           </Card>
         </Col>
       </Row>
