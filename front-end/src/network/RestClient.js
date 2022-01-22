@@ -24,5 +24,19 @@ class RestClient {
         return error;
       });
   };
+
+  static PutRequest = (putUrl, putJson) => {
+    let config = {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    };
+    return axios
+      .put(putUrl, putJson, config)
+      .then(function (response) {
+        return response;
+      })
+      .catch(function (error) {
+        return error;
+      });
+  };
 }
 export default RestClient;
