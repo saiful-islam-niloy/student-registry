@@ -38,5 +38,16 @@ class RestClient {
         return error;
       });
   };
+
+  static DeleteRequest(deleteUrl) {
+    return axios
+      .delete(deleteUrl)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        return error;
+      });
+  }
 }
 export default RestClient;
