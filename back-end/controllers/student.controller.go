@@ -113,22 +113,25 @@ func UpdateStudent(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteStudent(w http.ResponseWriter, r *http.Request) {
-	reqBody, err := ioutil.ReadAll(r.Body)
+	keys, err := r.URL.Query()["email"]
 
-	student := models.Student{}
-	json.Unmarshal(reqBody, &student)
+	if !err || len(keys[0]) < 1 {
+		log.Println("Url Param 'key' is missing")
+		return
+	}
+
+	key := keys[0]
+	log.Println("Url Param 'key' is: " + string(key))
 
 	collection := config.GetStudentsCollection()
 
 	collection.DeleteOne(
 		context.TODO(),
-		bson.M{"email": student.Email},
+		bson.M{"email": key},
 	)
 
-	if err != nil {
-		log.Fatal(err)
-		fmt.Fprintf(w, "Error")
-	}
+	fmt.Fprintf(w, "Error")
+
 }
 
 func DeleteAllStudent(w http.ResponseWriter, r *http.Request) {
