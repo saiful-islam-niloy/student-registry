@@ -23,7 +23,9 @@ export default class AddStudent extends Component {
     };
     RestClient.PostRequest('http://localhost:5050/add-student', JSON.stringify(student))
       .then((result) => {
-        if (result) console.log(result);
+        if (result) {
+          if (result.data == 'Email already registered!') alert(result.data);
+        }
         this.reset();
       })
       .catch((error) => {

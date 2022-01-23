@@ -26,7 +26,6 @@ func AddStudent(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if isRegistered(student.Email) == true {
-		w.WriteHeader(404)
 		fmt.Fprintf(w, "Email already registered!")
 		return
 	}
