@@ -7,7 +7,7 @@ export default class Banner extends Component {
       <Container fluid={true}>
         <br />
         <Card className='banner_background p-2'>
-          <Card.Body>
+          <Card.Body className=' center'>
             <Card.Title className='banner_title'>Student Registry System</Card.Title>
           </Card.Body>
         </Card>

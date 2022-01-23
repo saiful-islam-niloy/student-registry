@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import RestClient from '../network/RestClient';
@@ -12,11 +13,16 @@ export default class StudentList extends Component {
     };
   }
 
+  static propTypes = {
+    gradient: PropTypes.string.isRequired
+  };
+
   componentDidMount() {
     RestClient.GetRequest('http://localhost:5050/get-all-student').then((response) => {
       this.setState({ students: response });
       this.renderStudents();
     });
+    console.log(this.props);
   }
 
   renderStudents() {
@@ -26,7 +32,7 @@ export default class StudentList extends Component {
       let { name, university, email, major } = student;
       return (
         <Col lg={4} md={4} key={index}>
-          <Card className='student_card'>
+          <Card className='student_card' style={{ background: this.props.gradient }}>
             <Card.Body>
               <Card.Title>{name}</Card.Title>
               <Card.Text>University: {university}</Card.Text>

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import RestClient from '../network/RestClient';
@@ -17,6 +18,10 @@ export default class UpdateStudent extends Component {
       students: []
     };
   }
+
+  static propTypes = {
+    gradient: PropTypes.string.isRequired
+  };
 
   componentDidMount() {
     this.getAllStudents();
@@ -38,6 +43,7 @@ export default class UpdateStudent extends Component {
         <Col lg={4} md={4} key={index}>
           <Card
             className='student_card'
+            style={{ background: this.props.gradient }}
             onClick={() => this.setState({ list: false, email: email, name: name, university: university, major: major })}>
             <Card.Body>
               <Card.Title>{name}</Card.Title>

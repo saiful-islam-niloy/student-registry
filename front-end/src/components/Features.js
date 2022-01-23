@@ -14,7 +14,8 @@ export default class Features extends Component {
       features: [
         {
           title: 'Student List',
-          gradient: 'linear-gradient(135deg, #DFEC51 0%,#73AA0A 100%)'
+          gradient: 'linear-gradient(135deg, #DFEC51 0%,#73AA0A 100%)',
+          student_card_gradient: 'linear-gradient(160deg, #14a34d 0%, #42998e 100%)'
         },
         {
           title: 'Add Student',
@@ -22,11 +23,13 @@ export default class Features extends Component {
         },
         {
           title: 'Update Student',
-          gradient: 'linear-gradient(135deg, #13f1fc 0%,#0470dc 100%)'
+          gradient: 'linear-gradient(135deg, #13f1fc 0%,#0470dc 100%)',
+          student_card_gradient: 'linear-gradient(160deg, #309ECC 0%, #707799 100%)'
         },
         {
           title: 'Delete Student',
-          gradient: 'linear-gradient(135deg, #FF57B9 0%,#A704FD 100%)'
+          gradient: 'linear-gradient(135deg, #FF57B9 0%,#A704FD 100%)',
+          student_card_gradient: 'linear-gradient(43deg, #314bcd 0%, #cf33c7 100%)'
         }
       ]
     };
@@ -53,7 +56,7 @@ export default class Features extends Component {
   }
 
   render() {
-    let { status } = this.state;
+    let { status, features } = this.state;
     return (
       <Row>
         <Col lg={4} md={6}>
@@ -71,10 +74,10 @@ export default class Features extends Component {
               {status == 2 && 'Update Student'}
               {status == 3 && 'Delete Student'}
             </Card.Title>
-            {status === 0 && <StudentList />}
+            {status === 0 && <StudentList gradient={features[0].student_card_gradient} />}
             {status === 1 && <AddStudent />}
-            {status === 2 && <UpdateStudent />}
-            {status === 3 && <DeleteStudent />}
+            {status === 2 && <UpdateStudent gradient={features[2].student_card_gradient} />}
+            {status === 3 && <DeleteStudent gradient={features[3].student_card_gradient} />}
           </Card>
         </Col>
       </Row>

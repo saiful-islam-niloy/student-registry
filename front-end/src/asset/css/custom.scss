@@ -25,9 +25,6 @@ $secondary-weight: 500;
   height: 30vh;
   margin: 1rem 2rem 2rem 2rem;
   font-size: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .banner_title {
@@ -35,9 +32,10 @@ $secondary-weight: 500;
   color: $primary-background;
   border-radius: 30px;
   padding: 1rem;
-  font-size: 5rem;
+  font-size: 7rem;
   font-family: $fancy-font;
   font-weight: $secondary-weight;
+  color: white;
 }
 
 .feature {
