@@ -22,7 +22,6 @@ go run main.go
 ```
 Open a new terminal under student-registry folder.
 ```
-cd ..
 cd front-end
 npm install
 npm start
