@@ -8,7 +8,7 @@ export default class AddStudent extends Component {
     this.state = {
       name: '',
       email: '',
-      univeristy: '',
+      university: '',
       major: ''
     };
   }
@@ -35,7 +35,7 @@ export default class AddStudent extends Component {
   }
 
   reset() {
-    this.setState({ name: '', email: '', univeristy: '', major: '' });
+    this.setState({ name: '', email: '', university: '', major: '' });
   }
 
   render() {
@@ -57,10 +57,10 @@ export default class AddStudent extends Component {
         </Form.Group>
 
         <Form.Group className='mb-3'>
-          <Form.Label>Univeristy</Form.Label>
+          <Form.Label>University</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Univeristy'
+            placeholder='University'
             value={this.state.university}
             onChange={(e) => this.setState({ university: e.target.value })}
           />
