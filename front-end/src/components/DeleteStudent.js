@@ -55,7 +55,7 @@ export default class DeleteStudent extends Component {
       return (
         <Col lg={4} md={4} key={index}>
           <Card
-            className='student_card'
+            className='student_card hover'
             style={{ background: this.props.gradient }}
             onClick={() => {
               this.deleteStudent(email);

@@ -42,7 +42,7 @@ export default class UpdateStudent extends Component {
       return (
         <Col lg={4} md={4} key={index}>
           <Card
-            className='student_card'
+            className='student_card hover'
             style={{ background: this.props.gradient }}
             onClick={() => this.setState({ list: false, email: email, name: name, university: university, major: major })}>
             <Card.Body>
