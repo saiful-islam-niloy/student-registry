@@ -24,32 +24,54 @@ export default class AddStudent extends Component {
     RestClient.PostRequest('http://localhost:5050/add-student', JSON.stringify(student))
       .then((result) => {
         if (result) console.log(result);
+        this.reset();
       })
       .catch((error) => {
         alert('Failed! ' + error.response.data);
+        this.reset();
       });
   }
+
+  reset() {
+    this.setState({ name: '', email: '', univeristy: '', major: '' });
+  }
+
   render() {
     return (
       <Form className='mt-4 form'>
         <Form.Group className='mb-3'>
           <Form.Label>Email address</Form.Label>
-          <Form.Control type='email' placeholder='Enter email' onChange={(e) => this.setState({ email: e.target.value })} />
+          <Form.Control
+            type='email'
+            placeholder='Enter email'
+            value={this.state.email}
+            onChange={(e) => this.setState({ email: e.target.value })}
+          />
         </Form.Group>
 
         <Form.Group className='mb-3'>
           <Form.Label>Name</Form.Label>
-          <Form.Control type='text' placeholder='Name' onChange={(e) => this.setState({ name: e.target.value })} />
+          <Form.Control type='text' placeholder='Name' value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
         </Form.Group>
 
         <Form.Group className='mb-3'>
           <Form.Label>Univeristy</Form.Label>
-          <Form.Control type='text' placeholder='Univeristy' onChange={(e) => this.setState({ university: e.target.value })} />
+          <Form.Control
+            type='text'
+            placeholder='Univeristy'
+            value={this.state.university}
+            onChange={(e) => this.setState({ university: e.target.value })}
+          />
         </Form.Group>
 
         <Form.Group className='mb-3'>
           <Form.Label>Major</Form.Label>
-          <Form.Control type='text' placeholder='Major' onChange={(e) => this.setState({ major: e.target.value })} />
+          <Form.Control
+            type='text'
+            placeholder='Major'
+            value={this.state.major}
+            onChange={(e) => this.setState({ major: e.target.value })}
+          />
         </Form.Group>
 
         <Button variant='primary' onClick={() => this.addStudent()}>
