@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import RestClient from '../network/RestClient';
+import Url from '../network/Url';
 
 export default class AddStudent extends Component {
   constructor() {
@@ -21,7 +22,7 @@ export default class AddStudent extends Component {
       university,
       major
     };
-    RestClient.PostRequest('http://localhost:5050/add-student', JSON.stringify(student))
+    RestClient.PostRequest(Url.ADD_STUDENT, JSON.stringify(student))
       .then((result) => {
         if (result) {
           if (result.data == 'Email already registered!') alert(result.data);

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import RestClient from '../network/RestClient';
+import Url from '../network/Url';
 import NoStudent from './NoStudent';
 
 export default class DeleteStudent extends Component {
@@ -23,7 +24,7 @@ export default class DeleteStudent extends Component {
   }
 
   getAllStudents() {
-    RestClient.GetRequest('http://localhost:5050/get-all-student').then((response) => {
+    RestClient.GetRequest(Url.GET_ALL_STUDENT).then((response) => {
       this.setState({ students: response });
       this.renderStudents();
     });
@@ -37,7 +38,7 @@ export default class DeleteStudent extends Component {
     let student = {
       email
     };
-    RestClient.DeleteRequest('http://localhost:5050/delete-student?email=' + email, JSON.stringify(student))
+    RestClient.DeleteRequest(`${Url.DELETE_STUDENT}?email=${email}`, JSON.stringify(student))
       .then(() => {
         this.getAllStudents();
         this.setState({ view: '' });

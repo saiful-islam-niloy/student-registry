@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import RestClient from '../network/RestClient';
+import Url from '../network/Url';
 import NoStudent from './NoStudent';
 
 export default class UpdateStudent extends Component {
@@ -28,7 +29,7 @@ export default class UpdateStudent extends Component {
   }
 
   getAllStudents() {
-    RestClient.GetRequest('http://localhost:5050/get-all-student').then((response) => {
+    RestClient.GetRequest(Url.GET_ALL_STUDENT).then((response) => {
       this.setState({ students: response });
       this.renderStudents();
     });
@@ -67,7 +68,7 @@ export default class UpdateStudent extends Component {
       university,
       major
     };
-    RestClient.PutRequest('http://localhost:5050/update-student', JSON.stringify(student))
+    RestClient.PutRequest(Url.UPDATE_STUDENT, JSON.stringify(student))
       .then(() => {
         this.getAllStudents();
         this.setState({ list: true, view: '' });

@@ -4,6 +4,7 @@
 /node_modules
 /public
 /src/asset/css/bootstrap.min.css
+/src/network/Url.js
 
 package.json
 package-lock.json
