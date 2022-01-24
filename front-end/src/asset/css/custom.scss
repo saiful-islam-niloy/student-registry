@@ -19,55 +19,53 @@ $secondary-weight: 500;
   cursor: grab;
 }
 
-.banner_background {
-  background: linear-gradient(135deg, #c3ec52 0%, #0ba29d 100%);
-  border-radius: 15px;
-  height: 30vh;
-  margin: 1rem 2rem 2rem 2rem;
-  font-size: 5rem;
-}
+.banner {
+  .banner_background {
+    background: linear-gradient(135deg, #c3ec52 0%, #0ba29d 100%);
+    border-radius: 15px;
+    height: 30vh;
+    margin: 1rem 2rem 2rem 2rem;
+    font-size: 5rem;
+  }
 
-.banner_title {
-  display: inline-block;
-  color: $primary-background;
-  border-radius: 30px;
-  padding: 1rem;
-  font-size: 7rem;
-  font-family: $fancy-font;
-  font-weight: $secondary-weight;
-  color: white;
+  .banner_title {
+    display: inline-block;
+    color: $primary-background;
+    border-radius: 30px;
+    padding: 1rem;
+    font-size: 7rem;
+    font-family: $fancy-font;
+    font-weight: $secondary-weight;
+    color: white;
+  }
 }
 
 .feature {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .feature_card {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+    border-radius: 15px;
+    padding: 1rem;
+    font-family: $primary-font;
+    font-weight: $secondary-weight;
+    margin: 1rem 1rem 1rem 2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
 
-.feature_card {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25vw;
-  border-radius: 15px;
-  padding: 1rem;
-  font-family: $primary-font;
-  font-weight: $secondary-weight;
-  margin: 1rem 1rem 1rem 2rem;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
+  .feature_card:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 10px rgb(143, 140, 140);
+  }
 
-.feature_card:hover {
-  transform: scale(1.05);
-  box-shadow: 5px 5px 10px rgb(143, 140, 140);
-}
-
-.feature_title {
-  font-family: $primary-font;
-  font-weight: $secondary-weight;
-  font-size: 20px;
+  .feature_title {
+    font-family: $primary-font;
+    font-weight: $secondary-weight;
+    font-size: 20px;
+  }
 }
 
 .activity {

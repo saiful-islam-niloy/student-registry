@@ -4,7 +4,7 @@ import { Card, Container } from 'react-bootstrap';
 export default class Banner extends Component {
   render() {
     return (
-      <Container fluid={true}>
+      <Container fluid={true} className='banner'>
         <br />
         <Card className='banner_background p-2'>
           <Card.Body className=' center'>

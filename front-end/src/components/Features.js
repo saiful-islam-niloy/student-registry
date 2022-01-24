@@ -59,11 +59,8 @@ export default class Features extends Component {
     let { status, features } = this.state;
     return (
       <Row>
-        <Col lg={4} md={6}>
-          <Row className='feature'>
-            {this.state.view}
-            {/* <br /> */}
-          </Row>
+        <Col lg={4} md={6} className='feature'>
+          <Row>{this.state.view}</Row>
         </Col>
         <Col lg={8} md={6}>
           <Card className='activity overflow-auto'>
